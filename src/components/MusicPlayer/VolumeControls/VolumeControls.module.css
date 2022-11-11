@@ -14,6 +14,7 @@
     margin: 0 10px 0 10px;
     max-height: 13px;
     width: 10rem;
+    cursor: pointer;
     background-color: red;
     border-radius: 42px;
     background: #FFFFFF1A;

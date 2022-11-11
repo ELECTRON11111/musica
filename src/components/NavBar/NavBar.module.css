@@ -33,6 +33,22 @@
 }
 
 .Nav_container > img:hover {
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     scale: 1.3;
+}
+
+@media (min-height: 650px) {
+    .Logo {
+        margin-bottom:.1rem;
+    }
+
+    .Nav_container {
+        scale: .6;
+        margin: 0;
+    }
+
+    .Nav_container:last-child {
+        position: relative;
+        bottom: 2.25rem;
+    }
 }
