@@ -1,7 +1,7 @@
 import React from "react";
 
 const musicPlayer = () => {
-    return (<p>Stuff</p>)
+    return (<p></p>)
 }
 
 export default musicPlayer;

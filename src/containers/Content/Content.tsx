@@ -1,6 +1,6 @@
 import React from "react";
 const Content = () => {
-    return (<p>j</p>);
+    return (<p></p>);
 }
 
 export default Content;
