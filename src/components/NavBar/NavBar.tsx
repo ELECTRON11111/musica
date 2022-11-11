@@ -13,7 +13,7 @@ const NavBar = () => {
         <div className={classes.NavBar}>
             <div className={classes.Logo} style = {{
                 marginBottom: "1.5rem",
-                marginTop: "12px"
+                marginTop: "18px"
             }}>
                 <img src={Logo} alt="logo" />              
             </div>

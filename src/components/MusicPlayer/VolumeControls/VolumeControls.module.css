@@ -1,0 +1,33 @@
+.Container {
+    display: flex;
+    margin: 0 0.8rem 0 0.8rem;
+    /* background-color: pink; */
+}
+
+.Container img {
+    max-width: 18px;
+    min-height: 18px;
+}
+
+.volume {
+    display: flex;
+    margin: 0 10px 0 10px;
+    max-height: 13px;
+    width: 10rem;
+    background-color: red;
+    border-radius: 42px;
+    background: #FFFFFF1A;
+}
+
+.volume_progress {
+    display: flex;
+    flex-basis: 40%;
+    background: #FACD66;
+    border-radius: 42px;
+}
+
+@media (max-width: 570px) {
+    .Container {
+        display: none;
+    }
+}

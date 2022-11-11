@@ -1,0 +1,14 @@
+.MusicPlayer {
+    /* display: none; */
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    z-index: 500;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-height: 5.625rem;
+    box-shadow: 0px -25px 100px 0px #10101082;
+    filter: drop-shadow(0px -25px 100px rgba(16, 16, 16, 0.51));
+}
