@@ -7,7 +7,7 @@ const VolumeControls = () => {
         <div className={classes.Container}>
             <img src={VolumeIcon} alt={"volume"}/>
             <div className={classes.volume} style={{
-                position: "relative", top:"2.375rem", flexShrink: "1.3"
+                position: "relative", top:"2.8rem", flexShrink: "1.3"
             }}>
                 <div className={classes.volume_progress}></div>
             </div>
