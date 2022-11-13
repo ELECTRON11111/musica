@@ -1,6 +1,12 @@
 import React from "react";
+import Search from "./Search/Search";
+
 const Content = () => {
-    return (<p></p>);
+    return (
+        <div>
+            <Search />
+        </div>
+    );
 }
 
 export default Content;
