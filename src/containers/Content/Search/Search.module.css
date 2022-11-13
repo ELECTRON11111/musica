@@ -21,6 +21,7 @@
     border: 0;
     background: #1D2123;
     height: 70%;
+    color: rgba(255, 255, 255, 0.44);
     width: 90%;
     padding-left: 10px;
     /* font-family: Quicksand; */
@@ -28,6 +29,11 @@
     font-weight: 600;
     line-height: 18px;
     text-align: left;
+}
+
+.Container input:focus {
+    /* border: red; */
+    /* background: red; */
 }
 
 @media (max-width: 525px) {
