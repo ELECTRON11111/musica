@@ -11,7 +11,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    margin: 3rem 1rem;
+    /* margin: 0rem 1rem; */
 }
 
 .Container div {

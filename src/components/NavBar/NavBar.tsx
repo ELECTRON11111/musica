@@ -12,7 +12,7 @@ const NavBar = () => {
     return (
         <div className={classes.NavBar}>
             <div className={classes.Logo} style = {{
-                marginBottom: "1.5rem",
+                marginBottom: "3rem",
                 marginTop: "18px"
             }}>
                 <img src={Logo} alt="logo" />              
