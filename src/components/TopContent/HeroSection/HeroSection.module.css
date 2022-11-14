@@ -11,7 +11,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    /* margin: 0rem 1rem; */
+    margin: 2.4rem 1rem;
 }
 
 .Container div {
@@ -73,4 +73,14 @@
     border-radius: 2.5rem;
     position: relative;
     top: 1px;
+}
+
+@media (max-width: 795px){
+    .Container { 
+        width: 50%;
+    }
+    
+    .heroImage {
+        display: none;
+    }
 }
