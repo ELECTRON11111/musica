@@ -1,12 +1,15 @@
 import React from "react";
 import Search from "../../components/Search/Search";
+import TopContent from "../../components/TopContent/TopContent";
 import HeroSection from "../../components/TopContent/HeroSection/HeroSection";
 
 const Content = () => {
     return (
-        <div>
+        <div style={{
+            width: "100vw"
+        }}>
             <Search />
-            <HeroSection />
+            <TopContent />
         </div>
     );
 }
