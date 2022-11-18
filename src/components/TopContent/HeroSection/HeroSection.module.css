@@ -84,8 +84,8 @@
     }
 }
 
-/* @media (max-width: 1000px) {
+@media (max-width: 650px) {
     .Container {
-        width: 72%
+        width: 90%
     }
-} */
+}

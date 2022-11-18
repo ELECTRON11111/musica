@@ -80,3 +80,51 @@
     align-self: center;
     background: inherit;
 }
+
+
+@media(max-width: 650px) {
+    .Container {
+        margin: 15px 10px;
+        margin-left: 0;
+        /* width: 20.1875rem; */
+        /* width: 450px; */
+        width: 70vw;
+        height: 15rem;
+        border-radius: 20px;
+    }
+
+    .data {
+        flex-direction: column; 
+        /* align-items: flex-start; */
+        justify-content: flex-start;
+    }
+
+    .data img {
+        width: 108px;
+        height: 99px;
+        margin-bottom: 1.3rem;
+    }
+
+    .text {
+        margin: 0;
+        ;
+    }
+
+    .title {
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+    .text p {
+        margin-bottom: 2rem;
+    }
+
+    .length {
+        font-size: 14px;
+    }
+
+    .heartContainer {
+        margin-top: 20px;
+        align-self: flex-start;
+    }
+}

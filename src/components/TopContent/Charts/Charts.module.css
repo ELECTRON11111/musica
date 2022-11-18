@@ -23,6 +23,17 @@
 }
 
 @media (max-width: 650px) {
+    .Container {
+        width: 76vw;
+        width: max-content;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    /* .Container > * {
+        display: inline-block;
+    } */
+
     .Container h2 {
         margin-bottom: 0rem;
     }

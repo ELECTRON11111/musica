@@ -2,3 +2,13 @@
     width: 100%;
     /* justify-content: space-between; */
 }
+
+@media (max-width: 650px) {
+    .Container {
+        display: flex;
+        width: max-content;
+        /* display: inline-block; */
+        flex: 0 0 auto;
+        width: 77vw;
+    }
+}

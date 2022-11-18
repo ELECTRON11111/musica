@@ -6,7 +6,7 @@ const Charts = () => {
     return (
         <div className={classes.Container}>
             <h2>Top charts</h2>
-            <ChartItems />
+            <ChartItems/>
         </div>
             
     )

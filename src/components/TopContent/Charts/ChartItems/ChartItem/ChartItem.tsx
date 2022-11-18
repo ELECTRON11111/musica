@@ -13,7 +13,7 @@ interface propTypes {
 function ChartItem(props: propTypes) {
 
     return (
-        <div className={classes.Container} style={{width: "100%", display:"flex"}}>
+        <div className={classes.Container}>
             <div className={classes.data}>
                 <img src={"chartImages/chart-img-3.png"} alt="AlbumIMG" />
 

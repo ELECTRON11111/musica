@@ -5,11 +5,7 @@ import Charts from "./Charts/Charts";
 
 const TopContent = () => {
     return (
-        <div className={classes.Container} style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around"
-        }}>
+        <div className={classes.Container}>
             <HeroSection />
             <Charts />
         </div>
