@@ -48,3 +48,21 @@
         margin: 0 25px;
     }
 }
+
+@media (max-width: 360px) {
+    .progress_bar,
+    .controls img:nth-child(1),
+    .controls img:nth-child(2),
+    .controls img:nth-child(5) {
+        display: none;
+    }
+
+    .Container {
+        margin-right: 0;
+        padding-right: 0;
+    }
+
+    .controls {
+        justify-content: flex-end;
+    }
+}

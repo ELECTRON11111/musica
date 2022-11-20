@@ -107,7 +107,6 @@
 
     .text {
         margin: 0;
-        ;
     }
 
     .title {
@@ -126,5 +125,11 @@
     .heartContainer {
         margin-top: 20px;
         align-self: flex-start;
+    }
+}
+
+@media(max-width: 300px) {
+    .heartContainer {
+        border: 0;
     }
 }
