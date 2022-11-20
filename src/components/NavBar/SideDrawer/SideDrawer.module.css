@@ -1,0 +1,39 @@
+.SideDrawer {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: white;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    /* This transition is done when "transform" is used on this element */
+    transition: transform 0.3s ease-out;
+}
+
+/* We then set media queries to determine what will happen on bigger devices */
+/* If device width exceeds 500px */
+
+@media (min-width: 500px) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+/*  This will be attatched conditionally in the JS file, and will be responsible for the animations when opening and closing the SideDrawer */
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    /* Take it away from the screen */
+    transform: translateX(-100%);
+}
+
+.Logo {
+    height: 11%;
+    margin-bottom: 32px;
+}

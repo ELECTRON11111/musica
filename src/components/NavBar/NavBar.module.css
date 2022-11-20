@@ -37,18 +37,22 @@
     scale: 1.3;
 }
 
-@media (min-height: 650px) {
-    .Logo {
-        margin-bottom:.1rem;
-    }
 
+/* @media (min-height: 650px) {
+    .NavBar {
+        display: none;
+    }
+} */
+
+@media (max-width: 530px) {
     .Nav_container {
-        scale: 1;
-        /* margin: 0; */
+        scale: .8;
     }
+}
 
-    /* .Nav_container:last-child {
-        position: relative;
-        bottom: 2.25rem;
-    } */
+
+@media (max-width: 500px) {
+    .NavBar {
+        display: none;
+    }
 }

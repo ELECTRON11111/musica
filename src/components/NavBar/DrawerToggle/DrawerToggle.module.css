@@ -1,0 +1,30 @@
+.DrawerToggle {
+    width: 25px;
+    /* height: 100%; */
+    display: flex;
+    padding-right: 10px;
+    flex-flow: column;
+    justify-content: space-around;
+    align-self: center;
+    padding: 0;
+    /* box-sizing: border-box; */
+    cursor: pointer;
+}
+
+.DrawerToggle div {
+    width: 90%;
+    height: 3px;
+    background-color: white;
+}
+
+.DrawerToggle:hover {
+    transition: all 0.3s ease-out;
+    scale: 1.2;
+}
+
+/*Above 500px remove the DrawerToggle i.e the Hamburger Icon*/
+@media (min-width: 500px) {
+    .DrawerToggle {
+        display: none;
+    }
+}

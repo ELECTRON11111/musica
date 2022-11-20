@@ -6,6 +6,7 @@ import Radio from "../../assets/navigation/radio.svg";
 import Videos from "../../assets/navigation/videos.svg";
 import Profile from "../../assets/navigation/profile.svg";
 import Logout from "../../assets/navigation/Logout.svg";
+import DrawerToggle from "../../components/NavBar/DrawerToggle/DrawerToggle";
 import classes from "./NavBar.module.css";
 
 const NavBar = () => {
@@ -15,6 +16,7 @@ const NavBar = () => {
                 marginBottom: "3rem",
                 marginTop: "18px"
             }}>
+                {/* <DrawerToggle /> */}
                 <img src={Logo} alt="logo" />              
             </div>
 

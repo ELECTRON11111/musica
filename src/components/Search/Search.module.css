@@ -31,11 +31,6 @@
     text-align: left;
 }
 
-.Container input:focus {
-    /* border: red; */
-    /* background: red; */
-}
-
 @media (max-width: 525px) {
     .Container {
         width: 65vw;
@@ -46,29 +41,8 @@
     }
 }
 
-@media (max-width: 430px) {
-    /* Return to default styles */
+@media (max-width: 500px) {
     .Container {
-        display: flex;
-        justify-content: flex-end;
-        /* justify-content: space-between; */
-        margin: .5rem 0 0rem 0rem;
-        height: 65px;
-        background: inherit;
-        /* width: 70vw; */
-        align-items: center;
-        /* padding-left: 15rem; */
-        /* border-radius: 2rem; */
-        float: right;
-    }
-
-    .Container img {
-        height: 30px;
-        width: 30px;
-    }
-
-    .Container input{
         display: none;
     }
-
 }
