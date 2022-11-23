@@ -1,12 +1,13 @@
 import classes from "./DrawerToggle.module.css";
 
-// interface propTypes {
-//     clicked: Function;
-// }
+interface propTypes {
+    clicked: Function;
+}
 
-const DrawerToggle = () => {
+const DrawerToggle = (props: propTypes) => {
     return (
-        <div className = {classes.DrawerToggle}>
+        // To use events for conditional rendering with typescript, you have to pass the event through every prop it needs to go through.
+        <div onClick = {(e) => props.clicked(e)} className = {classes.DrawerToggle}>
             <div></div>
             <div></div>
         </div>
