@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./SongInfo.module.css";
-import defaultSongImage from "../../../assets/album/img-21.png";
+import defaultSongImage from "../../../../public/album/img-21.png";
 
 interface Song {
     src: string;
@@ -21,7 +21,7 @@ const SongInfo = (props: Song) => {
 }
 
 SongInfo.defaultProps = {
-    src: defaultSongImage,
+    src: "album/img-21.png",
     title: "Seasons In",
     artist: "James"
 }

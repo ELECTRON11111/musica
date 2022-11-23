@@ -15,7 +15,7 @@ function ChartItem(props: propTypes) {
     return (
         <div className={classes.Container}>
             <div className={classes.data}>
-                <img src={"chartImages/chart-img-3.png"} alt="AlbumIMG" />
+                <img src={props.imgSrc} alt="AlbumIMG" />
 
                 <div className={classes.text}>
                     <span className={classes.title}>{props.title}</span>

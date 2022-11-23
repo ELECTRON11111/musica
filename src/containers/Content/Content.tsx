@@ -4,6 +4,7 @@ import TopContent from "../../components/TopContent/TopContent";
 import TopNav from "../../components/TopNav/TopNav";
 import Modal from "../../components/UI/Modal/Modal";
 import SideDrawer from "../../components/NavBar/SideDrawer/SideDrawer";
+import Releases from "../../components/Releases/Releases";
 // The TopNav is for smaller displays
 
 const Content = () => {
@@ -21,6 +22,7 @@ const Content = () => {
             <SideDrawer open={isOpened} closed = {(e:any) => openedHandler()}/>
             <Search />
             <TopContent />
+            <Releases />
         </div>
     );
 }

@@ -14,19 +14,19 @@ const ChartItems = () => {
         {
             songName: "Golden age of 80s",
             songArtist: "Sean swadder",
-            imgSrc: "../../../../assets/chartImages/chart-img-3.png",
+            imgSrc: "chartImages/chart-img-1.png",
             length: "2:34:45"
         },
         {
             songName: "Raggae 'n' blues",
             songArtist: "Dj YK mule",
-            imgSrc: "../../../../assets/chartImages/chart-img-3.png",
+            imgSrc: "chartImages/chart-img-2.png",
             length: "1:02:42"
         },
         {
             songName: "Tomorrow's tunes",
             songArtist: "Obi Datti",
-            imgSrc: "../../../../assets/chartImages/chart-img-3.png",
+            imgSrc: "chartImages/chart-img-3.png",
             length: "2:01:25"
         }
     ]);

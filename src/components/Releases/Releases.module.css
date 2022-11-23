@@ -1,0 +1,19 @@
+.Container {
+    margin-left: 20px;
+    margin-bottom: 110px;
+}
+
+.release_items {
+    display: flex;
+    /* margin-right: 10px; */
+    overflow-x: scroll;
+    width: 85vw
+}
+
+.Container h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #EFEEE0;
+    margin-bottom: 1.1rem;
+}
