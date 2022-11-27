@@ -16,13 +16,12 @@ const NavBar = () => {
                 marginBottom: "3rem",
                 marginTop: "18px"
             }}>
-                {/* <DrawerToggle /> */}
                 <img src={Logo} alt="logo" />              
             </div>
 
             <div className={classes.Nav_container} style = {{
                 marginBottom: "2rem"
-            }}>
+            }}> 
                 <img src={Home} alt="home_icon" />
                 <img src={Playlist} alt="playlist_icon" />
                 <img src={Radio} alt="radio_icon" />

@@ -1,10 +1,13 @@
 import React, {useState} from "react";
+import {Route, Routes} from "react-router-dom";
 import Search from "../../components/Search/Search";
 import TopContent from "../../components/TopContent/TopContent";
 import TopNav from "../../components/TopNav/TopNav";
 import Modal from "../../components/UI/Modal/Modal";
 import SideDrawer from "../../components/NavBar/SideDrawer/SideDrawer";
 import Releases from "../../components/Releases/Releases";
+import MusicPlayer from "../../components/MusicPlayer/MusicPlayer";
+import Collections from "../Collections/Collections";
 // The TopNav is for smaller displays
 
 const Content = () => {
@@ -20,9 +23,16 @@ const Content = () => {
         }}>
             <TopNav drawerClicked = {(e: any): any => openedHandler()}/>
             <SideDrawer open={isOpened} closed = {(e:any) => openedHandler()}/>
-            <Search />
-            <TopContent />
-            <Releases />
+            <Routes>
+                <Route path="/home" element={(
+                    <React.Fragment >
+                        <Search />
+                        <TopContent />
+                        <Releases />
+                    </React.Fragment>
+                )} />
+                <Route path="/collections" element={<Collections />} />
+            </Routes>
         </div>
     );
 }

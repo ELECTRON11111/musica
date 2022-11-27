@@ -1,0 +1,97 @@
+.Collections_Container {
+    margin: 17px;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Links {
+    display: flex;
+    justify-content: space-around;
+    margin: 14px 0;
+}
+
+.Links a {
+    padding: 10px;
+    border: 1px solid #89897f;  ;
+    color: #89897f;
+    width: 48%;
+    font-family: "Quicksand", sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    background-color: #1D2123;
+    border-radius: 27px;
+}
+
+.Collection {
+    margin: 20px 0;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 234px;
+    background: linear-gradient(179.89deg, rgba(0, 0, 0, 0) 0.1%, rgba(15, 18, 19, 0.85) 80.67%);
+    /* background-image: url("collection/Rectangle 26.png"); */
+    background-size: cover;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+}
+
+.Collection img {
+    background: inherit;
+}
+
+.text {
+    position: absolute;
+    background: transparent;
+    bottom: 15px;
+    left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.text p {
+    background: transparent;
+    font-size: 14px;
+    color: #EFEEE0;
+}
+
+.artist_info {
+    background: transparent;
+    margin-bottom: 1rem;
+}
+
+.artist_info h3 {
+    background: transparent;
+    font-size: 24px;
+    color: #EFEEE0;
+}
+
+.artist_info span {
+    background: transparent;
+    font-size: 10px;
+    color: #EFEEE0;
+}
+
+.play_btn {
+    cursor: pointer;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 0px;
+    display: grid;
+    place-items: center;
+    background: #e0c992;
+    border-radius: 3rem;
+    /* opacity: 0.1; */
+}
+
+.play_btn:hover {
+    transition: scale 0.2s ease-out;
+    scale: 1.1;
+}
