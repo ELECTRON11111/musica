@@ -31,6 +31,7 @@
     position: relative;
     width: 100%;
     height: 234px;
+    transition: all 0.9s ease-out;
     background: linear-gradient(179.89deg, rgba(0, 0, 0, 0) 0.1%, rgba(15, 18, 19, 0.85) 80.67%);
     /* background-image: url("collection/Rectangle 26.png"); */
     background-size: cover;
@@ -94,4 +95,75 @@
 .play_btn:hover {
     transition: scale 0.2s ease-out;
     scale: 1.1;
+}
+
+@media(min-width: 500px) {
+    .Links {
+        margin-top: 1.5rem;
+        justify-content: flex-start;
+    }
+    .Links a {
+        border-radius: 27px;
+        width: 15%;
+        margin: 10px;
+        margin-bottom: 0;
+    }
+
+    .Collections {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Collection {
+        width: 213px;
+        height: 234px;
+        margin: 10px .8rem;
+    }
+
+    .text {
+        bottom: 0;
+        left: 10px;
+        scale: 0.8;
+    }
+
+    .text p {
+        position: absolute;
+        display: none;
+    }
+
+    .play_btn {
+        display: none;
+    }
+
+    .Collection:hover {
+        transition: background 0.4s ease-out;
+        background-size: 120%;
+    }
+
+    /* When the parent collection id hovered, do the following to its children. */
+    .Collection:hover .play_btn {
+        transition: all 0.9 ease-out;
+        display: grid;
+    }
+
+    .Collection:hover .text {
+        position: absolute;
+        top: 5px;
+    }
+
+    .Collection:hover .text {
+        transition: all 0.2s ease-in-out;
+        scale: 1;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .Collection:hover .artist_info {
+        position: absolute;
+        bottom: 5px;
+    }
+
+    .Collection:hover .text p {
+        display: flex;
+    }
 }

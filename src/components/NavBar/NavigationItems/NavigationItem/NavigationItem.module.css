@@ -15,12 +15,9 @@
     margin-right: 1.6rem;
 }
 
-.text a, .text_active a {
+.text {
     text-decoration: none;
     color: rgba(239, 238, 224, 0.25);
-}
-
-.text {
     font-style: normal;
     font-weight: 700;
     font-size: 17px;
@@ -30,7 +27,9 @@
     transition: scale 0.3s ease-out;
 }
 
-.text_active a{
+.text_active {
+    text-decoration: none;
+    color: rgba(239, 238, 224, 0.25);
     font-family: "Quicksand";
     font-size: 17px;
     font-weight: 700;
