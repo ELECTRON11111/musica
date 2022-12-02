@@ -11,6 +11,14 @@ import Collections from "../Collections/Collections";
 // The TopNav is for smaller displays
 
 const Content = () => {
+    const home = (
+        <React.Fragment >
+            <Search />
+            <TopContent />
+            <Releases />
+        </React.Fragment>
+    )
+
     const [isOpened, setIsOpened] = useState(false);
 
     const openedHandler = () => {
@@ -24,13 +32,7 @@ const Content = () => {
             <TopNav drawerClicked = {(e: any): any => openedHandler()}/>
             <SideDrawer open={isOpened} closed = {(e:any) => openedHandler()}/>
             <Routes>
-                <Route path="/home" element={(
-                    <React.Fragment >
-                        <Search />
-                        <TopContent />
-                        <Releases />
-                    </React.Fragment>
-                )} />
+                <Route path= "/" element = {home}  />
                 <Route path="/collections" element={<Collections />} />
             </Routes>
         </div>
