@@ -15,7 +15,8 @@ const Content = () => {
         <React.Fragment >
             <Search />
             <TopContent />
-            <Releases />
+            <Releases type = {"New Releases."} route = "new"/>
+            <Releases type = {"Popular in your area"} route = "popular" />
         </React.Fragment>
     )
 

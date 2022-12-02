@@ -2,7 +2,12 @@ import React from "react";
 import classes from "./Releases.module.css";
 import ReleaseItem from "./ReleaseItem/ReleaseItem";
 
-function Releases() {
+interface propType {
+    type: string;
+    route: string;
+}
+
+function Releases(props: propType) {
     const songs = [
         {
             src: "album/img-21.png",
@@ -25,13 +30,26 @@ function Releases() {
             title: "Nomad"
         },
         {
+            src: "album/Rectangle 20.png",
+            title: "Nomad"
+        },
+        {
+            src: "album/Rectangle 20.png",
+            title: "Nomad"
+        },
+        {
             src: "album/Rectangle 18.png",
             title: "Blind"
         }
     ]
     return (
-        <div className={classes.Container}>
-            <h2>New Releases.</h2>
+        <div 
+            className={classes.Container}
+            style = {props.route === "popular"? {
+                marginBottom: "110px"
+            }: {}}
+        >
+            <h2>{props.type}</h2>
             <div className={classes.release_items}>
                 {songs.map(song => {
                     return (
