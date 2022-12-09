@@ -1,12 +1,14 @@
 import React, {useEffect} from "react";
+import {NavLink} from "react-router-dom";
 import classes from "./ChartItem.module.css";
 import heart from "../../../../../assets/Heart.svg";
 
 interface propTypes {
-    title: string,
-    artist: string,
-    imgSrc: string,
-    length: string
+    title: string;
+    artist: string;
+    imgSrc: string;
+    length: string;
+    id: string;
 }
 
 
@@ -18,7 +20,18 @@ function ChartItem(props: propTypes) {
                 <img src={props.imgSrc} alt="AlbumIMG" />
 
                 <div className={classes.text}>
-                    <span className={classes.title}>{props.title}</span>
+                    <NavLink to = {`/${props.id}`} style = {{
+                        textDecoration: "none",
+                        background: "transparent"
+                    }}>
+                        <span 
+                            className={classes.title} 
+                            // onClick={() => {chartSelected(props.id)}}
+                        >
+                            {props.title}
+                        </span>
+                    </NavLink>
+
                     <p>{props.artist}</p>
                     <span className={classes.length}>{props.length}</span>
                 </div>

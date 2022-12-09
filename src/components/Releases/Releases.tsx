@@ -11,35 +11,43 @@ function Releases(props: propType) {
     const songs = [
         {
             src: "album/img-21.png",
-            title: "Life in a bubble."
+            title: "Life in a bubble.",
+            id: "1"
         },
         {
             src: "album/Rectangle 15.png",
-            title: "Mountain"
+            title: "Mountain",
+            id: "2"
         },
         {
             src: "album/Rectangle 17.png",
-            title: "Everything's black"
+            title: "Everything's black",
+            id: "3"
         },
         {
             src: "album/Rectangle 19.png",
-            title: "Cancelled"
+            title: "Cancelled",
+            id: "4"
         },
         {
             src: "album/Rectangle 20.png",
-            title: "Nomad"
+            title: "Nomad",
+            id: "5"
         },
         {
             src: "album/Rectangle 20.png",
-            title: "Nomad"
+            title: "Nomad",
+            id: "6"
         },
         {
             src: "album/Rectangle 20.png",
-            title: "Nomad"
+            title: "Nomad",
+            id: "7"
         },
         {
             src: "album/Rectangle 18.png",
-            title: "Blind"
+            title: "Blind",
+            id: "8"
         }
     ]
     return (
@@ -56,6 +64,7 @@ function Releases(props: propType) {
                         <ReleaseItem 
                             imgSrc={song.src} 
                             title={song.title} 
+                            key={song.id}
                         />
                     )
                 })}

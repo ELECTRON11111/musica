@@ -3,19 +3,20 @@ import {Route, Routes} from "react-router-dom";
 import Search from "../../components/Search/Search";
 import TopContent from "../../components/TopContent/TopContent";
 import TopNav from "../../components/TopNav/TopNav";
-import Modal from "../../components/UI/Modal/Modal";
+// import Modal from "../../components/UI/Modal/Modal";
 import SideDrawer from "../../components/NavBar/SideDrawer/SideDrawer";
 import Releases from "../../components/Releases/Releases";
-import MusicPlayer from "../../components/MusicPlayer/MusicPlayer";
+import Playlist from "../Playlist/Playlist";
+// import MusicPlayer from "../../components/MusicPlayer/MusicPlayer";
 import Collections from "../Collections/Collections";
 // The TopNav is for smaller displays
 
-const Content = () => {
+const Content = (props: any) => {
     const home = (
-        <React.Fragment >
+        <React.Fragment {...props}>
             <Search />
             <TopContent />
-            <Releases type = {"New Releases."} route = "new"/>
+            <Releases type = {"New Releases."} route = "new" />
             <Releases type = {"Popular in your area"} route = "popular" />
         </React.Fragment>
     )
@@ -34,7 +35,10 @@ const Content = () => {
             <SideDrawer open={isOpened} closed = {(e:any) => openedHandler()}/>
             <Routes>
                 <Route path= "/" element = {home}  />
-                <Route path="/collections" element={<Collections />} />
+                <Route path="/collections" element={<Collections {...props} />} />
+                <Route path="/:id" element={<Playlist {...props} />} />
+                {/* 404 case for unknown paths*/}
+                <Route path="*" element={<h1>No match</h1>} />
             </Routes>
         </div>
     );

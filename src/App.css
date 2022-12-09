@@ -1,5 +1,10 @@
 /* .... */
+:root {
+  --bg: #1E1E1E;
+}
+
+/* Used  css variables to set background since our background would change from its default depending on the image of the album*/
 
 * {
-  background: #1E1E1E;
+  background: var(--bg);
 }
