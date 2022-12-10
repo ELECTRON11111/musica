@@ -23,6 +23,7 @@ function Files(props: any) {
                     artist = {file.artist}
                     duration = {file.duration}
                     id = {file.id}
+                    key = {file.id}
                     playlistName = {props.playlistName}
                 />
             })}

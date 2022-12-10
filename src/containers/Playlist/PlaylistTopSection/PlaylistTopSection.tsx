@@ -35,6 +35,7 @@ function PlaylistTopSection(props: propType) {
                     </div>
                     <div className = {classes.heart}>
                         <img src={heart} />
+                        <p>Like</p>
                     </div>
                 </div>
             </div>

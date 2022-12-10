@@ -61,8 +61,32 @@ ___________________________________________________
     border-radius: 32px;
 }
 
-.Play p, .Add_to_Collection p {
+.Play p, .Add_to_Collection p, .heart p {
     color: white;
     background: transparent;
     font-size: 12px;
+}
+
+.heart p {
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .TopSection {
+        flex-direction: column;
+    }
+
+    .TopSection > img {
+        width: 50vw;
+    }
+
+    .heart p {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    .TopSection > img {
+        width: 80vw;
+    }
 }

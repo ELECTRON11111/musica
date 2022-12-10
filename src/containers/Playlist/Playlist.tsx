@@ -15,30 +15,6 @@ function Playlist(props: any) {
     
     const data = [
         {
-            "id": "playlist-4",
-            "title": "Ayra Starr Playlist",
-            "cover": "https://musica-api.onrender.com/cover/play_cover_4.jpeg",
-            "info": "Oyinkansola Sarah Aderibigbe (born 14 June 2002), known professionally as Ayra Starr, is a Nigerian singer. Born in Cotonou, Benin, Ayra Starr began a fashion career at the age of 16 with Quove Model Management before deciding to pursue music.",
-            "files": [
-                {
-                "id": "ayra-1",
-                "artist": "Ayra Starr",
-                "duration": "3:09",
-                "title": "Rush",
-                "cover": "https://musica-api.onrender.com/cover/cover_2.jpeg",
-                "audio": "https://musica-api.onrender.com/audio/audio_2.mp3"
-                },
-                {
-                "id": "ayra-2",
-                "artist": "Magix ft Ayra Starr",
-                "duration": "2:26",
-                "title": "Love Don't Cost A Dime",
-                "cover": "https://musica-api.onrender.com/cover/cover_12.jpeg",
-                "audio": "https://musica-api.onrender.com/audio/audio_12.mp3"
-                }
-            ]
-        },
-        {
             "id": "playlist-1",
             "title": "YBNL Playlist",
             "cover": "https://musica-api.onrender.com/cover/play_cover_1.jpg",
@@ -79,6 +55,11 @@ function Playlist(props: any) {
             ]
         }
     ]
+
+    // document.documentElement.style.setProperty(`--bg`, `url(${data[0].cover}) 120% no-repeat `);
+    // document.documentElement.style.setProperty(`--bg`, `linear-gradient(0deg, rgba(10, 10, 10, 0.6), rgba(0, 0, 0, 0.6)), url(${data[0].cover}) 250%`);
+    // document.body.style.setProperty("box-shadow", "0px 0px 11px rgba(250, 205, 102, 0.25)")
+
     return (
         <div className={classes.Container}>
             <Search isIcon = {false} />

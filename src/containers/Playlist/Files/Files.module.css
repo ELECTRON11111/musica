@@ -2,13 +2,14 @@
     display: flex;
     flex-direction: column;
     margin-left: 30px;
+    margin-bottom: 160px;
 }
 
 .File_Container {
     width: 95%;
     cursor: pointer;
     display: grid;
-    grid-template-columns: 5fr 5fr 5fr 5fr .5fr;
+    grid-template-columns: 5fr 8fr 5fr 5fr .5fr;
     column-gap: 50px;
     padding: 5px;
     margin: 5px 0;
@@ -16,7 +17,7 @@
     padding-right: 20px;
     background: rgba(51, 55, 59, 0.37);
     backdrop-filter: blur(5px);
-    
+
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
 }
@@ -41,6 +42,42 @@
     border-radius: 8.53125px;
 }
 
+.Heart {
+    margin: auto 0;
+    Width: 15.83px;
+    Height: 14.14px;
+}
+
 .Options {
     margin: auto 0;
+}
+
+@media (max-width: 600px) {
+    .File_Container {
+        display: flex;
+        height: 130%;
+    }
+
+    .Title {
+        margin-right: auto;
+    }
+    
+    .Duration {
+        position: relative;
+        left: 42px;
+    }
+
+    .Id, .Heart {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .File_Container {
+        column-gap: 20px;
+    }
+
+    .Duration {
+        left: 17px;
+    }
 }
