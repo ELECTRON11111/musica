@@ -26,13 +26,14 @@
     border-radius: 32px;
 }
 
-.Nav_container > img {
+.Nav_container a {
+    background: transparent;
     margin: 1.1rem;
     cursor: pointer;
     /* margin-bottom: rem; */
 }
 
-.Nav_container > img:hover {
+.Nav_container a:hover {
     transition: all 0.3s ease-out;
     scale: 1.3;
 }
