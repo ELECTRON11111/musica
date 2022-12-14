@@ -1,4 +1,6 @@
+import React from "react";
 import classes from "./Files.module.css";
+import Spinner from "../../../components/UI/Spinner/Spinner";
 import heart from "../../../assets/playlist/heart-grey.svg";
 import options from "../../../assets/playlist/options.svg";
 import playlistImg from "../../../assets/playlist/playlist-items/Rectangle 1.png";
@@ -14,8 +16,8 @@ interface filePropTypes {
 }
 
 function Files(props: any) {
-    return (
-        <div className={classes.Container}>
+    const DOM = (
+        <React.Fragment>
             {props.files.map((file: any) => {
                 return <File 
                     cover = {file.cover}
@@ -27,6 +29,12 @@ function Files(props: any) {
                     playlistName = {props.playlistName}
                 />
             })}
+        </React.Fragment>
+    );
+
+    return (
+        <div className={classes.Container}>
+            {props.files.length == 0? <Spinner />: DOM}
         </div>
     );
 }

@@ -4,13 +4,6 @@ import Spinner from "../../../UI/Spinner/Spinner";
 import ChartItem from "./ChartItem/ChartItem";
 import classes from "./ChartItems.module.css";
 
-// interface chartType {
-//     songName: string;
-//     songArtist: string;
-//     imgSrc: string;
-//     length: string;
-// }
-
 const ChartItems = (props: any) => {
     const [chart, setChart] = useState<any>([]);
 
@@ -46,6 +39,7 @@ const ChartItems = (props: any) => {
     
     return (
         <div className={classes.Container}>
+            {/* if the chart is empty show a spinner, else show the DOM */}
             {chart.length == 0? <Spinner />: DOM}
         </div>
     );
