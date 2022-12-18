@@ -10,9 +10,12 @@ interface propType {
     title: string;
     info: string;
     length: string;
+    addToCollectionsClicked: any;
+    likeBtnClicked: any;
 }
 
 function PlaylistTopSection(props: propType) { 
+    
     return (
         <div className= {classes.TopSection}>
             <img src = {props.cover} className={classes.Lead} />
@@ -29,11 +32,11 @@ function PlaylistTopSection(props: propType) {
                         <img src={play} alt="playBtn" />
                         <p>Play all</p>
                     </div>
-                    <div className = {classes.Add_to_Collection}>
+                    <div className = {classes.Add_to_Collection} onClick = {(e: React.MouseEvent) => props.addToCollectionsClicked(e)}>
                         <img src={AddToCollectionBtn} alt="playBtn" />
                         <p>Add to collection</p>
                     </div>
-                    <div className = {classes.heart}>
+                    <div className = {classes.heart} onClick = {(e: React.MouseEvent) => props.likeBtnClicked(e)}>
                         <img src={heart} />
                         <p>Like</p>
                     </div>

@@ -1,5 +1,5 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {NavLink, Routes, Route} from "react-router-dom";
 import classes from "./Collections.module.css";
 import playIcon from "../../assets/play.svg";
 import Search from "../../components/Search/Search";
@@ -18,51 +18,58 @@ interface collectionPropTypes {
 }
 
 function Collections(props: any) {
-    const collectionData = [
+    const [items, setItems] = useState([
         {
-            imgSource: "collection/Rectangle 26.png",
+            cover: "collection/Rectangle 26.png",
             title: "Limits",
             artist: "John McCall",
-            likesInMillions: 2.3
-        },
-        {
-            imgSource: "collection/Rectangle 27.png",
-            title: "Limits",
-            artist: "John McCall",
-            likesInMillions: 2.3
-        },
-        {
-            imgSource: "collection/Rectangle 28.png",
-            title: "Limits",
-            artist: "John McCall",
-            likesInMillions: 2.3
-        },
-        {
-            imgSource: "collection/Rectangle 29.png",
-            title: "Limits",
-            artist: "John McCall",
-            likesInMillions: 2.3
+            likesInMillions: 2.3,
+            id: "2"
         }
-    ];
+    ]);
 
-    // console.log(props); 
 
+    useEffect(() => {
+        // On Mounting this component get the data from localStorage
+        // So Typescript would have to deal with null data type - if the "items" from localStorage is null meaning nothing is assigned yet, we just assign an empty object
+        const items = localStorage.getItem("items");  
+
+        // if items are not empty i.e not false, i.e true set the Items to the state.
+        if(items) {
+            setItems(JSON.parse(items));
+        }
+    }, []);
+
+    // useEffect(() => {
+    //   localStorage.setItem("items", JSON.stringify(items));
+    // }, [items]);
+
+    const DOM = items.map(collectionItem => {
+        return <Collection 
+            title={collectionItem.title}
+            artist={collectionItem.artist}
+            imgSrc={collectionItem.cover}
+            likesInMillions={2.3}
+            key={collectionItem.id}
+        />
+    });
+  
     return (
         <div className={classes.Collections_Container}>
             <Search isIcon = {false}/>
             <div className={classes.Links}>
                 <Link path="/collections" text="My Collection" />
-                <Link path="/collections/Likes" text="Likes" />
+                <Link path="/collections/likes" text="Likes" />
             </div>
 
             <div className={classes.Collections}>
-                {collectionData.map(collectionItem => {
+                {items.map(collectionItem => {
                     return <Collection 
                         title={collectionItem.title}
                         artist={collectionItem.artist}
-                        imgSrc={collectionItem.imgSource}
-                        likesInMillions={collectionItem.likesInMillions}
-                        key={collectionItem.imgSource}
+                        imgSrc={collectionItem.cover}
+                        likesInMillions={2.3}
+                        key={collectionItem.id}
                     />
                 })}
             </div>

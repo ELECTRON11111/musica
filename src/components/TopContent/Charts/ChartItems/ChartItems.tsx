@@ -28,7 +28,7 @@ const ChartItems = (props: any) => {
                     // Take name of first artist in the playlist
                     artist = {song["files"][0]["artist"]}
                     imgSrc = {song["cover"]}
-                    length = {"30:00"}
+                    length = {`1${song["files"][0]["duration"]}`}
                     id =  {song["id"]}
                     // Recall, key must be added to any dynamically used array for content display.
                     key = {song["id"]}
