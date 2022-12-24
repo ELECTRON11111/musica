@@ -20,7 +20,7 @@ function ChartItem(props: propTypes) {
                 <img src={props.imgSrc} alt="AlbumIMG" />
 
                 <div className={classes.text}>
-                    <NavLink to = {`/${props.id}`} style = {{
+                    <NavLink to = {`/playlist/${props.id}`} style = {{
                         textDecoration: "none",
                         background: "transparent"
                     }}>
