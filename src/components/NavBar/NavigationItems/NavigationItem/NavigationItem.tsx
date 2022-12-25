@@ -1,28 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import classes from "./NavigationItem.module.css";
 import {NavLink} from "react-router-dom";
 
 interface propType {
-    src: string;
+    activeSrc: string;
+    inActiveSrc: string;
     text: string;
-    active: boolean;
     route: string
 }
 
 function NavigationItems(props: propType) {
-    const [active, changeActiveStatus] = useState(false);
 
     return (
         <div className={classes.Nav_Item}>
-            <img src={props.src} alt="img" />
-            <span>
                 <NavLink 
                     to={`/${props.route}`} 
                     className = {({isActive} :any) => isActive? classes.text_active: classes.text} 
                 >
-                    {props.text}
+                    {({isActive}) => (
+                        <React.Fragment>
+                            <img src={isActive? props.activeSrc: props.inActiveSrc} alt="img" />
+                            <span>{props.text}</span>
+                        </React.Fragment>
+                    )}
                 </NavLink>
-            </span>
         </div>
     )
 }

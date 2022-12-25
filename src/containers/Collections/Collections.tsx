@@ -97,6 +97,10 @@ function Link(props: linkPropTypes) {
                 border: isActive? "0": "1px solid #89897f",
                 backgroundColor: isActive? "#FACD66":"inherit"
             })}
+            // The "end" keyword ensures this element isn't matched as active other descendants are matched
+            // For example, to render a link that is only active at the website root and not any other URLs
+            // So it prevents the collections whoose route is just "/" to show active for "/likes" 
+            end
             >
             {props.text}
         </NavLink>

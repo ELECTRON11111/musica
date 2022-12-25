@@ -35,8 +35,8 @@ const Content = (props: any) => {
             <SideDrawer open={isOpened} closed = {(e:any) => openedHandler()}/>
             <Routes>
                 <Route path= "/" element = {home}  />
+                {/* this route has * since it'd render other routes deep in itself */}
                 <Route path="/collections/*" element={<Collections />} />
-                {/* <Route path="/collections/likes" element={<Collections />} /> */}
                 <Route path="/playlist/:id" element={<Playlist {...props} />} />
                 {/* 404 case for unknown paths*/}
                 <Route path="*" element={<h1>No match</h1>} />

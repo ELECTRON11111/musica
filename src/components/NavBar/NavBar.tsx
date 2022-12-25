@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext, createContext} from "react";
+import React from "react";
 import {NavLink} from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import HomeActive from "../../assets/navigation/Home-active.svg";
@@ -12,68 +12,7 @@ import Logout from "../../assets/navigation/Logout.svg";
 // import DrawerToggle from "../../components/NavBar/DrawerToggle/DrawerToggle";
 import classes from "./NavBar.module.css";
 
-const NavBar = () => {
-    // store active status in state so there are rerenders when active class changes.
-    const [activeLinks, setActiveLinks] = useState({
-        isHomeActive: true, 
-        isCollectionsActive: false, 
-        isRadioActive: false, 
-        isVideosActive: false, 
-        isProfileActive: false, 
-        isLogoutActive: false, 
-    });
-
-    const active = {
-        isHomeActive: true, 
-        isCollectionsActive: false, 
-        isRadioActive: false, 
-        isVideosActive: false, 
-        isProfileActive: false, 
-        isLogoutActive: false, 
-    }
-
-    const ActiveContext = createContext(active);
-
-    // Store previous value of state with useRef and useEffect
-    const prevActiveLinks = useRef({isHomeActive: true, isCollectionsActive: false});
-
-    useEffect(() => {
-        prevActiveLinks.current = activeLinks;
-    }, [activeLinks])
-    
-    useEffect(() => {
-        navClickedHandler();
-    }, [])
-
-    const navClickedHandler = () => {
-
-        // Check all the link References to determine with icons should be active and which shouldn't
-        
-        // Before we do that, we have to make sure there were changes between the prevState and the current state
-        // so we don't end up having a re-render cycle
-        // console.log(activeLinks.isHomeActive !== prevActiveLinks.current.isHomeActive)
-        if (!(activeLinks.isHomeActive !== prevActiveLinks.current.isHomeActive) && !(activeLinks.isCollectionsActive !== prevActiveLinks.current.isCollectionsActive)) {
-
-            setActiveLinks({
-                isHomeActive: homeRef.current.className === "active",
-                isCollectionsActive: collectionsRef.current.className === "active", 
-                isRadioActive: radioRef.current.className === "active", 
-                isVideosActive: videosRef.current.className === "active", 
-                isProfileActive: profileRef.current.className === "active", 
-                isLogoutActive: logoutRef.current.className === "active", 
-            });
-        }
-    }
-    
-    // useRefs to store active class to store the NavLinks each.
-    const a = document.createElement("a"); // Example for typescript to infer type of our refs
-    const homeRef = useRef(a);
-    const collectionsRef = useRef(a);
-    const radioRef = useRef(a);
-    const videosRef = useRef(a);
-    const profileRef = useRef(a);
-    const logoutRef = useRef(a);
-
+const NavBar = () => {  
     return (
         <div className={classes.NavBar}>
             {/* Logo has more styles in the CSS file */}
@@ -89,18 +28,19 @@ const NavBar = () => {
             }}> 
                 <NavLink
                     to={"/"}
-                    ref = {homeRef}
-                    onClick = {(e: React.MouseEvent) => navClickedHandler()}
+                    relative={"path"}
                 >
-                    <img src={activeLinks.isHomeActive ? HomeActive: Home} alt="home_icon" />
+                    {({ isActive }) => (
+                        <img src={isActive ? HomeActive: Home} alt="home_icon" />
+                    )}
                 </NavLink>
 
                 <NavLink 
                     to={"/collections"}
-                    ref={collectionsRef}
-                    onClick = {(e: React.MouseEvent) => navClickedHandler()}
                 >
-                    <img src={activeLinks.isCollectionsActive? CollectionsActive: Collections} alt="playlist_icon"/>
+                    {({ isActive }) => (
+                        <img src={isActive? CollectionsActive: Collections} alt="playlist_icon"/>
+                    )}
                 </NavLink>
 
                 <NavLink to={"/radio"}><img src={Radio} alt="radio_icon" /></NavLink>
