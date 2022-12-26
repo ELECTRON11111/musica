@@ -90,3 +90,13 @@ ___________________________________________________
         width: 80vw;
     }
 }
+
+@media (max-width: 380px) {
+    .TopSection > img {
+        margin: 0 0;
+        width: 83vw;
+    }
+    .Btns p {
+        font-size: 9px;
+    }
+}
