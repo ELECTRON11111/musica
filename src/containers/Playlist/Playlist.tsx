@@ -74,6 +74,10 @@ function Playlist(props: any) {
                 
                 // push updated data to localStorage
                 localStorage.setItem("items", JSON.stringify(LSCollectionsData));
+
+                alert("The playlist was successfully added! They're in your likes/collections");
+            } else {
+                alert("The playlist is already stored!");
             }
 
         } else {
@@ -99,6 +103,10 @@ function Playlist(props: any) {
                 LSLikedPlaylistData.push(specificPlaylist);
                 // push updated data to localStorage
                 localStorage.setItem("likedPlaylists", JSON.stringify(LSLikedPlaylistData));
+
+                alert("The playlist was successfully added! They're in your likes/collections");
+            } else {
+                alert("The playlist is already stored!");
             }
             
         } else {

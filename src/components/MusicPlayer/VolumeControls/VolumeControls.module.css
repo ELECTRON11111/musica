@@ -12,7 +12,7 @@
 .volume {
     display: flex;
     margin: 0 10px 0 10px;
-    max-height: 13px;
+    max-height: 7px;
     width: 10rem;
     cursor: pointer;
     background-color: red;
