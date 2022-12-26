@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Route, Routes} from "react-router-dom";
+import styled from "styled-components";
 import Search from "../../components/Search/Search";
 import TopContent from "../../components/TopContent/TopContent";
 import TopNav from "../../components/TopNav/TopNav";
@@ -39,10 +40,43 @@ const Content = (props: any) => {
                 <Route path="/collections/*" element={<Collections />} />
                 <Route path="/playlist/:id" element={<Playlist {...props} />} />
                 {/* 404 case for unknown paths*/}
-                <Route path="*" element={<h1>No match</h1>} />
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
         </div>
     );
 }
+
+// 404 page
+const PageNotFound = () => {  
+    const Text = styled.h1`
+        font-weight: 700;
+        font-size: 3rem;
+        line-height: 120%;
+        color: white;
+        margin-bottom: 1.1rem;
+
+        @media (max-width: 450px){
+            font-size: 1rem;
+        }
+    `;
+
+    return (
+        <div style={{
+                padding: "4rem", 
+                width: "100%", 
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+            }}
+        >
+            <Text>404, pageNotFound.</Text>
+            <h3>probably under construction..</h3>
+        </div>
+    )  
+}
+
+
 
 export default Content;
