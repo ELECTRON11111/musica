@@ -3,7 +3,7 @@
     width: 30%;
     flex-direction: column;
     justify-content: center;
-    margin: 0 2rem 0 .8rem;
+    margin: 0rem 2rem 0 .8rem;
 }
 
 .Container h2 {
@@ -13,7 +13,9 @@
     font-size: 24px;
     line-height: 120%;
     color: #EFEEE0;
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.2rem;
+    position: relative;
+    bottom: 10px;
 }
 
 @media (max-width: 1000px) {
@@ -35,6 +37,7 @@
     } */
 
     .Container h2 {
+        bottom: 0;
         margin-bottom: 0rem;
     }
 }

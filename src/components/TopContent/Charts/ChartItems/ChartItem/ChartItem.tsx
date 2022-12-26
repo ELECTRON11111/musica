@@ -18,18 +18,13 @@ function ChartItem(props: propTypes) {
         <div className={classes.Container}>
             <div className={classes.data}>
                 <img src={props.imgSrc} alt="AlbumIMG" />
-
+                
                 <div className={classes.text}>
                     <NavLink to = {`/playlist/${props.id}`} style = {{
                         textDecoration: "none",
                         background: "transparent"
-                    }}>
-                        <span 
-                            className={classes.title} 
-                            // onClick={() => {chartSelected(props.id)}}
-                        >
-                            {props.title}
-                        </span>
+                    }} className={classes.title}>
+                        {props.title}
                     </NavLink>
 
                     <p>{props.artist}</p>

@@ -1,8 +1,29 @@
 .Container {
     width: 100%;
     /* justify-content: space-between; */
+    overflow-y: scroll;
+    max-height: 300px;
+    border-radius: 5px;
 }
 
+/* to make the scroll bar custom. */
+
+/* width */
+/* ::-webkit-scrollbar {
+    width: 8px;
+} */
+  
+/* Track */
+/* ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+    background: #888;
+    border: 1px solid black; 
+} */
+  
 @media (max-width: 650px) {
     .Container {
         display: flex;
