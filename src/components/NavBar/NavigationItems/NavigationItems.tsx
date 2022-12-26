@@ -3,7 +3,7 @@ import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 import Home from "../../../../public/NavImages/Home.svg";
 import HomeActive from "../../../../public/NavImages/Home-active.svg";
-import Playlist from "../../../../public/NavImages/Playlist.svg";
+import Playlist from "../../../../public/NavImages/playlist.svg";
 import PlaylistActive from "../../../../public/NavImages/Playlist-active.svg";
 import Radio from "../../../../public/NavImages/radio.svg";
 import Videos from "../../../../public/NavImages/videos.svg";
