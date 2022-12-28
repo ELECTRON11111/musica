@@ -22,9 +22,14 @@
 
 .volume_progress {
     display: flex;
-    flex-basis: 40%;
+    flex-basis: 50%;
     background: #FACD66;
     border-radius: 42px;
+}
+
+.volume:hover {
+    transition: all 0.15s ease-in;
+    max-height: 12px; 
 }
 
 @media (max-width: 700px) {

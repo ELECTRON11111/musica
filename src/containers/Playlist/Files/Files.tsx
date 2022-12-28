@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import SongsContext from "../../../SongsContext/SongsContext";
 import classes from "./Files.module.css";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import heart from "../../../assets/playlist/heart-grey.svg";
 import options from "../../../assets/playlist/options.svg";
 import playlistImg from "../../../assets/playlist/playlist-items/Rectangle 1.png";
-import { ExecSyncOptionsWithBufferEncoding } from "child_process";
-
 interface filePropTypes {
     cover: string;
     title: string;
@@ -13,6 +12,7 @@ interface filePropTypes {
     duration: string;
     id: string;
     playlistName: string;
+    files: Array<object>;
 }
 
 function Files(props: any) {
@@ -27,6 +27,7 @@ function Files(props: any) {
                     id = {file.id}
                     key = {file.id}
                     playlistName = {props.playlistName}
+                    files = {props.files}
                 />
             })}
         </React.Fragment>
@@ -40,6 +41,12 @@ function Files(props: any) {
 }
 
 const File = (props: filePropTypes) => {
+    const {data, setData} = useContext<any>(SongsContext);
+
+    const songClickedHandler = () => {
+        setData({id: props.id, allSongs: props.files});
+    }
+
     return (
         <div className={classes.File_Container}>
             <div className={classes.Cover_Heart}>
@@ -47,7 +54,7 @@ const File = (props: filePropTypes) => {
                 <img src={heart} className={classes.Heart} alt="heart" />
             </div>
 
-            <p className={classes.Title}>{props.title} ~ {props.artist}</p>
+            <p className={classes.Title} onClick={() => songClickedHandler()}>{props.title} ~ {props.artist}</p>
             <p className={classes.Id}>{props.playlistName}</p>
             <p className={classes.Duration}>{props.duration}</p>
 

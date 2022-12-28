@@ -37,7 +37,7 @@ function Playlist(props: any) {
         // Get data for playlist
         axios.get(`https://musica-api.onrender.com/playlist/`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 // use the params id to get the specific playlist
                 const specificPlaylist = res.data.find((playlist: any) => {
                     if (playlist.id == params.id) {
@@ -46,7 +46,7 @@ function Playlist(props: any) {
                     }
                 })
 
-                console.log(specificPlaylist);
+                // console.log(specificPlaylist);
                 setData(specificPlaylist);
             })
             .catch(err => {
@@ -57,11 +57,11 @@ function Playlist(props: any) {
     
     const addToCollectionsHandler = () => {
 
-        const stuff = localStorage.getItem("items");
+        const localStorageData = localStorage.getItem("items");
         
         // Again typescript does not understand the type ... It expects a string but isn't sure that the getItem would be type safe. So we give it another option with the type it expects
         // If there is a localStorage data available for "likedPlaylists"
-        if(stuff !== null) {
+        if(localStorageData !== null) {
             
             const LSCollectionsData = JSON.parse(localStorage.getItem("items") || ""); // an array
             
@@ -89,10 +89,10 @@ function Playlist(props: any) {
     }
 
     const addToLikedPlaylists = () => {
-        const stuff = localStorage.getItem("likedPlaylists");
+        const localStorageData = localStorage.getItem("likedPlaylists");
 
         // If there is a localStorage data available for "likedPlaylists"
-        if(stuff !== null) {
+        if(localStorageData !== null) {
             const LSLikedPlaylistData = JSON.parse(localStorage.getItem("likedPlaylists") || ""); // an array
 
             // Check isplaylistLiked.
@@ -134,6 +134,8 @@ function Playlist(props: any) {
                 cover = {data["cover"]}
                 addToCollectionsClicked = {() => addToCollectionsHandler()}
                 likeBtnClicked = {() => addToLikedPlaylists()}
+                firstSongId = {data["files"][0].id}
+                files={data["files"]}
             />
             <Files files={data["files"]} playlistName={data["title"]} />
         </div>

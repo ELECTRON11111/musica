@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Route, Routes} from "react-router-dom";
 import styled from "styled-components";
 import Search from "../../components/Search/Search";
@@ -12,17 +12,26 @@ import Playlist from "../Playlist/Playlist";
 import Collections from "../Collections/Collections";
 // The TopNav is for smaller displays
 
+
 const Content = (props: any) => {
+    const [isOpened, setIsOpened] = useState(false);
+
     const home = (
         <React.Fragment {...props}>
             <Search />
             <TopContent />
-            <Releases type = {"New Releases."} route = "new" />
-            <Releases type = {"Popular in your area"} route = "popular" />
-        </React.Fragment>
-    )
+            <Releases 
+                type = {"New Releases."} 
+                route = "new" 
+            />
 
-    const [isOpened, setIsOpened] = useState(false);
+            <Releases 
+                type = {"Popular in your area"} 
+                route = "popular" 
+            />
+        </React.Fragment>
+    );
+
 
     const openedHandler = () => {
         setIsOpened(!isOpened);
@@ -46,19 +55,20 @@ const Content = (props: any) => {
     );
 }
 
+const Text = styled.h1`
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 120%;
+    color: white;
+    margin-bottom: 1.1rem;
+
+    @media (max-width: 450px){
+        font-size: 1rem;
+    }
+`;
+
 // 404 page
 const PageNotFound = () => {  
-    const Text = styled.h1`
-        font-weight: 700;
-        font-size: 3rem;
-        line-height: 120%;
-        color: white;
-        margin-bottom: 1.1rem;
-
-        @media (max-width: 450px){
-            font-size: 1rem;
-        }
-    `;
 
     return (
         <div style={{

@@ -24,7 +24,7 @@ function Releases(props: propType) {
 		// Trigger the API Call
         axios.get(`https://musica-api.onrender.com/${props.route}`)
             .then(res => {
-                console.log(res.status);
+                // console.log(res.status);
                 setResponse(res.data);
             })
             .catch(err => {
@@ -42,6 +42,8 @@ function Releases(props: propType) {
                     <ReleaseItem 
                         imgSrc={song['cover']} 
                         title={song['title']} 
+                        allReleases = {response}
+                        id={song['id']}
                         key={song['id']}
                     />
                 )

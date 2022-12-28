@@ -86,6 +86,10 @@ ___________________________________________________
 }
 
 @media (max-width: 500px) {
+    .heart, .Add_to_Collection, .heart {
+        gap: 12px
+    }
+
     .TopSection > img {
         width: 80vw;
     }

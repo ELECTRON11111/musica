@@ -11,7 +11,7 @@ const ChartItems = (props: any) => {
         // Trigger the API Call
         axios.get(`https://musica-api.onrender.com/playlist`)
             .then(res => {
-                console.log(res.status);
+                // console.log(res.status);
                 setChart(res.data);
             })
             .catch(err => {

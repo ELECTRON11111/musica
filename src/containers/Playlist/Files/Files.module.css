@@ -48,6 +48,11 @@
     Height: 14.14px;
 }
 
+.Title:hover {
+    scale: 1.1;
+    transition: scale 0.1s ease-out;
+}
+
 .Options {
     margin: auto 0;
 }
@@ -79,5 +84,11 @@
 
     .Duration {
         left: 17px;
+    }
+}
+
+@media (max-width: 370px) {
+    .File_Container {
+        column-gap: 24px;
     }
 }

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import SongsContext from "../../../SongsContext/SongsContext";
 import classes from "./PlaylistTopSection.module.css";
 import heart from "../../../assets/playlist/love.png";
 import play from "../../../assets/playlist/play-all.png";
@@ -12,10 +14,13 @@ interface propType {
     length: string;
     addToCollectionsClicked: any;
     likeBtnClicked: any;
+    firstSongId: any;
+    files: Array<object>
 }
 
 function PlaylistTopSection(props: propType) { 
-    
+    const {data, setData} = useContext<any>(SongsContext);
+
     return (
         <div className= {classes.TopSection}>
             <img src = {props.cover} className={classes.Lead} />
@@ -30,15 +35,29 @@ function PlaylistTopSection(props: propType) {
                 <div className = {classes.Btns}>
                     <div className = {classes.Play}>
                         <img src={play} alt="playBtn" />
-                        <p>Play all</p>
+                        <p
+                            onClick = {() => {
+                                setData({id: props.firstSongId, allSongs: props.files});
+                            }}
+                        >
+                            Play all
+                        </p>
                     </div>
-                    <div className = {classes.Add_to_Collection} onClick = {(e: React.MouseEvent) => props.addToCollectionsClicked(e)}>
+                    <div className = {classes.Add_to_Collection} >
                         <img src={AddToCollectionBtn} alt="playBtn" />
-                        <p>Add to collection</p>
+                        <p 
+                            onClick = {(e: React.MouseEvent) => props.addToCollectionsClicked(e)}
+                        >
+                            Add to collection
+                        </p>
                     </div>
-                    <div className = {classes.heart} onClick = {(e: React.MouseEvent) => props.likeBtnClicked(e)}>
-                        <img src={heart} />
-                        <p>Like</p>
+                    <div className = {classes.heart}>
+                        <img src={heart} onClick = {(e: React.MouseEvent) => props.likeBtnClicked(e)} />
+                        <p
+                            onClick = {(e: React.MouseEvent) => props.likeBtnClicked(e)}
+                        >
+                            Like
+                        </p>
                     </div>
                 </div>
             </div>
