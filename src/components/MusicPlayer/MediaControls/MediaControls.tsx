@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import SongsContext from "../../../SongsContext/SongsContext";
 import classes from "./MediaControls.module.css";
-import shuffle from "../../../assets/musicPlayer/shuffle.svg";
+import shuffleSrc from "../../../assets/musicPlayer/shuffle.svg";
 import previous from "../../../assets/musicPlayer/previous.svg";
 import playBtn from "../../../assets/musicPlayer/play-btn.svg";
 import next from "../../../assets/musicPlayer/next.svg";
@@ -21,6 +21,9 @@ const MediaControls = (props: propType) => {
 
     const progressRef = useRef<HTMLDivElement>(null);
     const repeatRef = useRef<HTMLImageElement>(null);
+    const shuffleRef = useRef<HTMLImageElement>(null);
+
+    let isShuffled = false;
 
     const repeat = () => {
         const repeatImgRef = repeatRef.current as HTMLImageElement;
@@ -37,10 +40,29 @@ const MediaControls = (props: propType) => {
         }
     }
 
+    const shuffle = () => {
+        const shuffleImgRef = shuffleRef.current as HTMLImageElement;
+        if (isShuffled) {
+            shuffleImgRef.style.borderTop = "5px solid #FACD66";
+            shuffleImgRef.style.borderRadius = "3px";
+        } else {
+            shuffleImgRef.style.borderTop = "0px";
+        }
+    }
+
     return (
         <div className={classes.Container}>
             <div className={classes.controls}>
-                <img src={shuffle} alt="shuffle" />
+                <img 
+                    src={shuffleSrc} 
+                    alt="shuffle" 
+                    ref = {shuffleRef} 
+                    onClick = {() => {
+                        isShuffled = !isShuffled;
+                        shuffle();
+                    }}
+                />
+
                 <img src={previous} 
                     alt="previous" 
                     data-action = {"previous"} 
