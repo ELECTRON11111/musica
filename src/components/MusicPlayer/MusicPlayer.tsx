@@ -27,7 +27,7 @@ const musicPlayer = () => {
         duration: "",
         id: "",
         isPlaying: false,
-        title: "" 
+        title: ""
     });
     const [songsList, setSongsList] = useState(data.allSongs);
     // Refs for Volume controls
@@ -41,7 +41,6 @@ const musicPlayer = () => {
     const audio = new Audio(activeSong.audio);
 
     useEffect(() => {
-        audio.load()
         // Modify the songs list from data to have an isPlaying property
         const modifiedSongsList = data.allSongs.map((song: any) => {
             
@@ -58,6 +57,20 @@ const musicPlayer = () => {
         
         setSongsList(modifiedSongsList);
     }, [data]);
+
+    useEffect(() => {
+        // Every time there's a new active song, start to play.
+        // Use previous volume
+        const progress = progressRef.current as HTMLDivElement;
+        const flexBasis = progress.style.flexBasis; // e.g 24%
+        // When page loads for the first time, the flexBasis is returned as "", so
+        // we have to make provisions for that
+        const volume = flexBasis == ""? 0.5 : (parseInt(flexBasis.split("%")[0]) / 100);
+        
+        audio["volume"] = volume;
+        audio.play();
+
+    }, [activeSong]);
 
     useEffect(() => {
         // this useEffect does cleanup work, pauses the previous song when a new one is clicked.
@@ -86,6 +99,55 @@ const musicPlayer = () => {
         }   
     }
 
+    const togglePlay = () => {
+        // console.log(audio.paused);
+        if (!audio.error) {
+            if (!audio.paused) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+        } else {
+            // reload the audio
+            audio.load();
+        }
+        
+    }
+
+    const songChangedHandler = (e: React.MouseEvent) => {
+
+        const target = e.target as HTMLImageElement;
+        
+        // find its index
+        const activeSongIndex = [...songsList].findIndex((song) => activeSong.id === song.id);
+        // Ensure STATE IMMUTABILITY, i.e do not change the state in any form without setState.
+        // Remember array, objects are reference types so without making a clone of the state
+        // ... whatever change we make to its reference would affect the state too.
+        const currentActiveSong = {...activeSong, index: activeSongIndex};
+
+        // change the "isPlaying" to false
+        currentActiveSong.isPlaying = false;
+
+        setActiveSong(currentActiveSong);
+
+        const isNext = target.dataset.action === "next";
+        let nextSongIndex = currentActiveSong.index + (isNext? 1: -1);
+        // if nextSongIndex is < 0 or if it is > songsList length, we shoud display 0 
+        // i.e the song should start over. else just use the value
+        console.log(nextSongIndex);
+        nextSongIndex = nextSongIndex < 0 || nextSongIndex > songsList.length - 1 ? 0: nextSongIndex;
+
+        const nextSong = [...songsList][nextSongIndex];
+        console.log(nextSong);
+        
+        // change its "isPlaying" to true
+        nextSong.isPlaying = true;
+        // save as new activeSong
+        setActiveSong(nextSong);
+
+        // console.log(activeSong);
+    }
+
 
     return (
         <div className={classes.MusicPlayer}>
@@ -98,6 +160,8 @@ const musicPlayer = () => {
                 audio = {audio}
                 progressBarRef = {progressBarRef}
                 progressRef = {mediaProgressRef}
+                toggleAudio = {() => togglePlay()}
+                changeSong = {(e: React.MouseEvent) => songChangedHandler(e)}
             />
             <VolumeControls 
                 volumeRef = {volumeRef} 

@@ -6,7 +6,8 @@ import MusicPlayer from "../../components/MusicPlayer/MusicPlayer";
 import classes from "./Layout.module.css";
 
 const Layout = (props: any) => {
-    const [data, setData] = useState({id: "new-2", allSongs: [{
+    const [data, setData] = useState({id: "new-2", allSongs: [
+      {
         artist: "Ayra Starr",
         audio: "https://musica-api.onrender.com/audio/audio_2.mp3",
         cover: "https://musica-api.onrender.com/cover/cover_2.jpeg",
