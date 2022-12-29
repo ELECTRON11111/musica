@@ -48,9 +48,14 @@
     Height: 14.14px;
 }
 
+.title {
+    transition: all 0.1s ease-out;
+}
+
 .Title:hover {
-    scale: 1.1;
-    transition: scale 0.1s ease-out;
+    scale: 1.05;
+    color: #FACD66;
+    border-bottom:3px solid #FACD66; 
 }
 
 .Options {

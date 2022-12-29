@@ -15,9 +15,10 @@ type propType = {
 
 const MediaControls = (props: propType) => {
     const [audioState, setAudioState] = useState(props.audio);
-    const {data, setData} = useContext<any>(SongsContext);
+    // const {data, setData} = useContext<any>(SongsContext);
 
     const progressRef = useRef<HTMLDivElement>(null);
+    const repeatRef = useRef<HTMLImageElement>(null);
 
     const togglePlay = () => {
         console.log(props.audio.paused);
@@ -34,6 +35,21 @@ const MediaControls = (props: propType) => {
         
     }
 
+    const repeat = () => {
+        const repeatImgRef = repeatRef.current as HTMLImageElement;
+
+        if (props.audio.loop) {
+            props.audio.loop = false;
+            // update UI
+            repeatImgRef.style.borderTop = "0px";
+        } else {
+            props.audio.loop = true;
+            // repeatImgRef.style. = "";
+            repeatImgRef.style.borderTop = "5px solid white";
+            repeatImgRef.style.borderRadius = "3px";
+        }
+    }
+
     return (
         <div className={classes.Container}>
             <div className={classes.controls}>
@@ -41,7 +57,7 @@ const MediaControls = (props: propType) => {
                 <img src={previous} alt="previous" />
                 <img src={playBtn} alt="playBtn" onClick = {() => togglePlay()} />
                 <img src={next} alt="next" />
-                <img src={repeatOne} alt="repeatOne" />
+                <img src={repeatOne} alt="repeatOne" onClick = {() => repeat()} ref = {repeatRef}/>
             </div>
 
             <div className={classes.progress_bar}
