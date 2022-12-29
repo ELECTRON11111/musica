@@ -30,10 +30,18 @@ const musicPlayer = () => {
         title: "" 
     });
     const [songsList, setSongsList] = useState(data.allSongs);
+    // Refs for Volume controls
     const volumeRef = useRef<HTMLDivElement>(null);
     const progressRef = useRef<HTMLDivElement>(null);
 
+    // Refs for MediaControls
+    const progressBarRef = useRef<HTMLDivElement>(null);
+    const mediaProgressRef = useRef<HTMLDivElement>(null);
+    
+    const audio = new Audio(activeSong.audio);
+
     useEffect(() => {
+        audio.load()
         // Modify the songs list from data to have an isPlaying property
         const modifiedSongsList = data.allSongs.map((song: any) => {
             
@@ -50,8 +58,16 @@ const musicPlayer = () => {
         
         setSongsList(modifiedSongsList);
     }, [data]);
+
+    useEffect(() => {
+        // this useEffect does cleanup work, pauses the previous song when a new one is clicked.
+        return () => {
+            // Cancel any playing audio
+            audio.currentTime = 0;
+            audio.pause();
+        }
+    })
     
-    const audio = new Audio(activeSong.audio);
     
     const volumeChangedHandler = (e: React.MouseEvent) => {
         // Audio volume range 0 - 1
@@ -59,19 +75,17 @@ const musicPlayer = () => {
             const coords = volumeRef.current.getBoundingClientRect();
             
             const value = (e.pageX - coords.left) / coords.width;
-            console.log(value);
 
             // update volume.
-            audio["volume"] = value < 0.05? 0.05: value;
+            audio["volume"] = value < 0.05? 0: value;
 
-            console.log(audio.volume);
-            
             // update the UI
             const progress = progressRef.current as HTMLDivElement;
             progress.style.flexBasis = `${value * 100}%`;
 
         }   
     }
+
 
     return (
         <div className={classes.MusicPlayer}>
@@ -80,7 +94,11 @@ const musicPlayer = () => {
                 title = {activeSong.title} 
                 artist = {activeSong.artist} 
             />
-            <MediaControls />
+            <MediaControls 
+                audio = {audio}
+                progressBarRef = {progressBarRef}
+                progressRef = {mediaProgressRef}
+            />
             <VolumeControls 
                 volumeRef = {volumeRef} 
                 progressRef = {progressRef} 

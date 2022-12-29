@@ -6,7 +6,7 @@ const VolumeControls = (props: {volumeChange: Function, volumeRef: any, progress
     let isDown = false;
     return (
         <div className={classes.Container}>
-            <img src={VolumeIcon} alt={"volume"}/>
+            <img src={VolumeIcon} alt={"volume"} draggable={false}/>
             <div 
                 className={classes.volume} 
                 style={{

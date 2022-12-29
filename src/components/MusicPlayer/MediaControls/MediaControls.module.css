@@ -40,6 +40,11 @@
     background: #FACD66;
 }
 
+.progress_bar:hover {
+    transition: all 0.1s ease-out;
+    height: 0.6rem;
+}
+
 @media (max-width: 430px) {
     .controls img{
         margin: 10px 5px;
