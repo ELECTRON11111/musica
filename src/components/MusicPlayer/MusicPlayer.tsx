@@ -65,6 +65,12 @@ const musicPlayer = () => {
     }, [data]);
 
     useEffect(() => {
+        // change media progress to 0%
+        const mediaProgress = mediaProgressRef.current as HTMLDivElement;
+        mediaProgress.style.flexBasis = "0%";
+        audio.currentTime = 0;
+
+
         // Every time there's a new active song, start to play.
         // Use previous volume
         const progress = progressRef.current as HTMLDivElement;
@@ -74,7 +80,9 @@ const musicPlayer = () => {
         const volume = flexBasis == ""? 0.5 : (parseInt(flexBasis.split("%")[0]) / 100);
         
         audio["volume"] = volume;
-        audio.play().catch((err) => {});
+        audio.play().catch((err) => {
+            console.log(`${err}`);
+        });
         // change text content of the playBtn
         const playBtn = playBtnRef.current as HTMLDivElement;
         playBtn.textContent = audio.paused? "►" :"❚❚";
@@ -165,6 +173,9 @@ const musicPlayer = () => {
         // if nextSongIndex is < 0 or if it is > songsList length, we shoud display 0 
         // i.e the song should start over. else just use the value
         nextSongIndex = nextSongIndex < 0 || nextSongIndex > songsList.length - 1 ? 0: nextSongIndex;
+
+        // again, nextSongIndex is now 0, change it to index of the last song on the list.
+        // nextSongIndex = nextSongIndex === 0? songsList.length - 1: nextSongIndex;
 
         const nextSong = [...songsList][nextSongIndex];
         // console.log(nextSong);

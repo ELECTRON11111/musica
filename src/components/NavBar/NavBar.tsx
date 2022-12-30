@@ -31,7 +31,7 @@ const NavBar = () => {
                     relative={"path"}
                 >
                     {({ isActive }) => (
-                        <img src={isActive ? HomeActive: Home} alt="home_icon" />
+                        <img src={isActive ? HomeActive: Home} title = "Home" alt="home_icon" />
                     )}
                 </NavLink>
 
@@ -39,17 +39,17 @@ const NavBar = () => {
                     to={"/collections"}
                 >
                     {({ isActive }) => (
-                        <img src={isActive? CollectionsActive: Collections} alt="playlist_icon"/>
+                        <img src={isActive? CollectionsActive: Collections} title = "Collections/Likes" alt="playlist_icon"/>
                     )}
                 </NavLink>
 
-                <NavLink to={"/radio"}><img src={Radio} alt="radio_icon" /></NavLink>
-                <NavLink to={"/videos"}><img src={Videos} alt="video_icon" /></NavLink>
+                <NavLink to={"/radio"}><img src={Radio} title = "Radio" alt="radio_icon" /></NavLink>
+                <NavLink to={"/videos"}><img src={Videos} title = "Videos" alt="video_icon" /></NavLink>
             </div>
 
             <div className={classes.Nav_container}>
-                <NavLink to={"/profile"}><img src={Profile} alt="profile_icon" /></NavLink>
-                <NavLink to={"/logout"}><img src={Logout} alt="logout_icon" /></NavLink>
+                <NavLink to={"/profile"}><img src={Profile} title = "Profile" alt="profile_icon" /></NavLink>
+                <NavLink to={"/logout"}><img src={Logout} title = "Logout" alt="logout_icon" /></NavLink>
             </div>
         </div>
     )

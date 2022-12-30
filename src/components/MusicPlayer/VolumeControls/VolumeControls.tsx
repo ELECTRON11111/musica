@@ -14,6 +14,7 @@ const VolumeControls = (props: {volumeChange: Function, volumeRef: any, progress
                     top:"2.8rem", 
                     flexShrink: "1.3"
                 }}
+                title = "volume - click and drag"
                 ref = {props.volumeRef}
                 onMouseDown = {(e: React.MouseEvent) => {
                     isDown = true;

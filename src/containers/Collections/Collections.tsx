@@ -14,6 +14,7 @@ interface collectionPropTypes {
     artist: string;
     imgSrc: string;
     likesInMillions: number;
+    id: string;
 }
 
 function Collections() {
@@ -56,9 +57,6 @@ function Collections() {
 
     const currentRoute = useLocation();
 
-    const navigate = useNavigate();
-
-  
     return (
         <div className={classes.Collections_Container}>
             <Search isIcon = {false}/>
@@ -116,6 +114,7 @@ function ItemsComponent(props: any) {
                 artist={collectionItem.artist}
                 imgSrc={collectionItem.cover}
                 likesInMillions={2.3}
+                id={collectionItem.id}
                 key={collectionItem.id}
             />
         })}
@@ -124,6 +123,7 @@ function ItemsComponent(props: any) {
 }
 
 function Collection(props: collectionPropTypes) {
+    const navigate = useNavigate()
     return (
         <div className={classes.Collection} style={{
             backgroundImage: `url("${props.imgSrc}")`
@@ -137,7 +137,7 @@ function Collection(props: collectionPropTypes) {
                 <p className={classes.likes}>{props.likesInMillions}m likes</p>
             </div>
 
-            <div className={classes.play_btn}>
+            <div className={classes.play_btn} onClick={() => navigate(`/playlist/${props.id}`)}>
                 <img src={playIcon} alt="play!" />
             </div>
         </div>

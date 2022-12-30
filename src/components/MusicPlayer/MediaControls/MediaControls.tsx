@@ -62,6 +62,7 @@ const MediaControls = (props: propType) => {
                 <img 
                     src={shuffleSrc} 
                     alt="shuffle" 
+                    title = "shuffle"
                     ref = {shuffleRef} 
                     onClick = {() => {
                         isShuffled = !isShuffled;
@@ -71,23 +72,37 @@ const MediaControls = (props: propType) => {
 
                 <img src={previous} 
                     alt="previous" 
+                    title = "previous"
                     data-action = {"previous"} 
                     onClick = {(e) => props.changeSong(e)} 
                 />
                 {/* <img src={playBtn} alt="playBtn" onClick = {() => props.toggleAudio()} /> */}
-                <div className= {classes.Play} onClick = {() => props.toggleAudio()} ref={props.playRef}>
+                <div 
+                    className= {classes.Play} 
+                    title = "play"
+                    onClick = {() => props.toggleAudio()} 
+                    ref={props.playRef}
+                >
                 ►
                 </div>
                 <img src={next} 
                     alt="next" 
+                    title = "next"
                     data-action = {"next"} 
                     onClick = {(e) => props.changeSong(e)} 
                 />
-                <img src={repeatOne} alt="repeatOne" onClick = {() => repeat()} ref = {repeatRef}/>
+                <img 
+                    src={repeatOne} 
+                    alt="repeatOne" 
+                    title = "repeat" 
+                    onClick = {() => repeat()} 
+                    ref = {repeatRef}
+                />
             </div>
 
             <div className={classes.progress_bar}
                 ref = {props.progressBarRef}
+                title = "progressBar - click and drag"
                 onMouseDown = {(e: React.MouseEvent) => {
                     isDown = true;
                     props.progressBarClicked(e);
