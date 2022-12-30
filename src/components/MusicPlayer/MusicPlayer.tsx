@@ -75,10 +75,15 @@ const musicPlayer = () => {
         
         audio["volume"] = volume;
         audio.play().catch((err) => {});
+        // change text content of the playBtn
+        const playBtn = playBtnRef.current as HTMLDivElement;
+        playBtn.textContent = audio.paused? "►" :"❚❚";
 
         // deal with progress
-        interval = setInterval(progressHandler, 1000);
-
+        // prevent setting the interval in the first render
+        // Since first song is Rush
+        // activeSong.title !== "Rush"? interval = setInterval(progressHandler, 1000): null;
+        interval = setInterval(progressHandler, 1000)
     }, [activeSong]);
 
     useEffect(() => {
@@ -91,7 +96,9 @@ const musicPlayer = () => {
             // clear the interval for progressHandler
             clearInterval(interval);
         }
-    })
+    }, [activeSong]);
+
+    // useEffect(() => clearInterval(interval), []);
     
     
     const volumeChangedHandler = (e: React.MouseEvent) => {
@@ -112,6 +119,7 @@ const musicPlayer = () => {
     }
 
     const togglePlay = () => {
+        clearInterval(interval);
         const playBtn = playBtnRef.current as HTMLDivElement;
         if (!audio.error) {
             if (!audio.paused) {
@@ -170,6 +178,7 @@ const musicPlayer = () => {
     }
 
     const progressHandler = () => {
+        console.log("happende")
         const progress = mediaProgressRef.current as HTMLDivElement;
         if (progress) {
             if (audio.ended) {
