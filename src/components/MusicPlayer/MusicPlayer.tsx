@@ -38,6 +38,10 @@ const musicPlayer = () => {
     const progressBarRef = useRef<HTMLDivElement>(null);
     const mediaProgressRef = useRef<HTMLDivElement>(null);
     
+    // for playBtn
+    const playBtnRef = useRef<HTMLDivElement>(null);
+
+    
     const audio = new Audio(activeSong.audio);
 
     let interval: any;
@@ -108,16 +112,22 @@ const musicPlayer = () => {
     }
 
     const togglePlay = () => {
-        // console.log(audio.paused);
+        const playBtn = playBtnRef.current as HTMLDivElement;
         if (!audio.error) {
             if (!audio.paused) {
                 // stop the timeUpdate
                 clearInterval(interval);
                 audio.pause();
+                
+                // change text content of the playBtn
+                playBtn.textContent = "►";
             } else {
                 // restart the timeUpdate
                 interval = setInterval(progressHandler, 1000);
                 audio.play();
+
+                // change text content of the playBtn
+                playBtn.textContent = "❚❚";
             }
         } else {
             // reload the audio
@@ -185,6 +195,11 @@ const musicPlayer = () => {
             // use percent to update flexBasis of progressBar
             const percent = `${(value * 100)}%`;
             progress.style.flexBasis = percent;    
+
+            audio.play();
+            // change text content of the playBtn
+            const playBtn = playBtnRef.current as HTMLDivElement;
+            playBtn.textContent = "❚❚";
         }
     }
 
@@ -199,6 +214,7 @@ const musicPlayer = () => {
                 audio = {audio}
                 progressBarRef = {progressBarRef}
                 progressRef = {mediaProgressRef}
+                playRef = {playBtnRef}
                 toggleAudio = {() => togglePlay()}
                 progressBarClicked = {(e: React.MouseEvent) => progressClickedHandler(e)}
                 changeSong = {(e: React.MouseEvent) => songChangedHandler(e)}

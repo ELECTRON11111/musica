@@ -17,8 +17,23 @@
     cursor: pointer;
 }
 
-.controls img:nth-child(3):hover {
+.Play {
     transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FACD66;
+    color: white;
+    width: 35px;
+    height: 35px;
+    margin: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+
+.Play:hover {
     scale: 1.3;
 }
 

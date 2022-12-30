@@ -10,6 +10,7 @@ import repeatOne from "../../../assets/musicPlayer/repeat-one.svg";
 type propType = {
     progressBarRef: any
     progressRef: any,
+    playRef: any,
     audio: any,
     toggleAudio: Function,
     changeSong: Function,
@@ -73,7 +74,10 @@ const MediaControls = (props: propType) => {
                     data-action = {"previous"} 
                     onClick = {(e) => props.changeSong(e)} 
                 />
-                <img src={playBtn} alt="playBtn" onClick = {() => props.toggleAudio()} />
+                {/* <img src={playBtn} alt="playBtn" onClick = {() => props.toggleAudio()} /> */}
+                <div className= {classes.Play} onClick = {() => props.toggleAudio()} ref={props.playRef}>
+                ►
+                </div>
                 <img src={next} 
                     alt="next" 
                     data-action = {"next"} 
