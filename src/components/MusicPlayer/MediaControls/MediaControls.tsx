@@ -12,22 +12,27 @@ type propType = {
     progressRef: any,
     audio: any,
     toggleAudio: Function,
-    changeSong: Function
+    changeSong: Function,
+    progressBarClicked: Function
 }
 
 const MediaControls = (props: propType) => {
     const [audioState, setAudioState] = useState(props.audio);
     // const {data, setData} = useContext<any>(SongsContext);
 
-    const progressRef = useRef<HTMLDivElement>(null);
     const repeatRef = useRef<HTMLImageElement>(null);
     const shuffleRef = useRef<HTMLImageElement>(null);
 
     let isShuffled = false;
+    let isDown = false;
 
     const repeat = () => {
         const repeatImgRef = repeatRef.current as HTMLImageElement;
-
+        // if (props.audio.ended) {
+        //     // change currentTime to 0
+        //     props.audio.currentTime = 0;
+        // }
+        
         if (props.audio.loop) {
             props.audio.loop = false;
             // update UI
@@ -79,8 +84,15 @@ const MediaControls = (props: propType) => {
 
             <div className={classes.progress_bar}
                 ref = {props.progressBarRef}
+                onMouseDown = {(e: React.MouseEvent) => {
+                    isDown = true;
+                    props.progressBarClicked(e);
+                }}
+                onMouseUp = {() => isDown = false}
+                onMouseLeave = {() => isDown = false}
+                onMouseMove = {(e: React.MouseEvent) => isDown && props.progressBarClicked(e)}
             >
-                <div className={classes.progress} ref = {progressRef}></div>
+                <div className={classes.progress} ref = {props.progressRef}></div>
             </div>
         </div>
     )

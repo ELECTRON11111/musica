@@ -40,6 +40,8 @@ const musicPlayer = () => {
     
     const audio = new Audio(activeSong.audio);
 
+    let interval: any;
+
     useEffect(() => {
         // Modify the songs list from data to have an isPlaying property
         const modifiedSongsList = data.allSongs.map((song: any) => {
@@ -68,7 +70,10 @@ const musicPlayer = () => {
         const volume = flexBasis == ""? 0.5 : (parseInt(flexBasis.split("%")[0]) / 100);
         
         audio["volume"] = volume;
-        audio.play();
+        audio.play().catch((err) => {});
+
+        // deal with progress
+        interval = setInterval(progressHandler, 1000);
 
     }, [activeSong]);
 
@@ -78,6 +83,9 @@ const musicPlayer = () => {
             // Cancel any playing audio
             audio.currentTime = 0;
             audio.pause();
+
+            // clear the interval for progressHandler
+            clearInterval(interval);
         }
     })
     
@@ -103,8 +111,12 @@ const musicPlayer = () => {
         // console.log(audio.paused);
         if (!audio.error) {
             if (!audio.paused) {
+                // stop the timeUpdate
+                clearInterval(interval);
                 audio.pause();
             } else {
+                // restart the timeUpdate
+                interval = setInterval(progressHandler, 1000);
                 audio.play();
             }
         } else {
@@ -134,11 +146,10 @@ const musicPlayer = () => {
         let nextSongIndex = currentActiveSong.index + (isNext? 1: -1);
         // if nextSongIndex is < 0 or if it is > songsList length, we shoud display 0 
         // i.e the song should start over. else just use the value
-        console.log(nextSongIndex);
         nextSongIndex = nextSongIndex < 0 || nextSongIndex > songsList.length - 1 ? 0: nextSongIndex;
 
         const nextSong = [...songsList][nextSongIndex];
-        console.log(nextSong);
+        // console.log(nextSong);
         
         // change its "isPlaying" to true
         nextSong.isPlaying = true;
@@ -148,6 +159,34 @@ const musicPlayer = () => {
         // console.log(activeSong);
     }
 
+    const progressHandler = () => {
+        const progress = mediaProgressRef.current as HTMLDivElement;
+        if (progress) {
+            if (audio.ended) {
+                // change currentTime to 0
+                audio.currentTime = 0;
+            } 
+            
+            const timePosition = (audio.currentTime / audio.duration) * 100;
+            progress.style.flexBasis = `${timePosition}%`;            
+        }
+    }
+
+    const progressClickedHandler = (e: React.MouseEvent) => {
+        const progressBar = progressBarRef.current as HTMLDivElement;
+        if (mediaProgressRef) {
+            const progress = mediaProgressRef.current as HTMLDivElement;
+            const coords = progressBar.getBoundingClientRect();
+            
+            const value = (e.pageX - coords.left) / coords.width;
+            // update current time
+            audio.currentTime = value * audio.duration;
+
+            // use percent to update flexBasis of progressBar
+            const percent = `${(value * 100)}%`;
+            progress.style.flexBasis = percent;    
+        }
+    }
 
     return (
         <div className={classes.MusicPlayer}>
@@ -161,6 +200,7 @@ const musicPlayer = () => {
                 progressBarRef = {progressBarRef}
                 progressRef = {mediaProgressRef}
                 toggleAudio = {() => togglePlay()}
+                progressBarClicked = {(e: React.MouseEvent) => progressClickedHandler(e)}
                 changeSong = {(e: React.MouseEvent) => songChangedHandler(e)}
             />
             <VolumeControls 
